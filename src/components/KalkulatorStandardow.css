@@ -62,6 +62,14 @@
   background-color: #dddddd;
 }
 
+
+/* Height and Income Sliders */
+.track-min {
+  background: #8b008b; /* Fill for the minimum sliders */
+  height: 8px;
+  border-radius: 4px;
+}
+
 .range-slider {
   width: 100%;
   height: 8px;
@@ -88,26 +96,35 @@
   height: 8px;
   border-radius: 4px;
   position: absolute;
-  background: #ddd;
 }
 
-.track-0 {
-  background: #ddd; /* Before the first thumb */
+/* Age Range Slider */
+.track-age {
+  background: #ddd; /* Default background for the entire track */
+  height: 8px;
+  border-radius: 4px;
+  position: absolute;
 }
 
-.track-1 {
-  background: #8b008b; /* Between the thumbs */
+.age-slider .track-age-0 {
+  background: #ddd; /* Unselected part before the first thumb */
 }
 
-.track-2 {
-  background: #ddd; /* After the second thumb */
-}
-.track:first-child {
-  background: transparent;
+.age-slider .track-age-1 {
+  background: #8b008b; /* Selected part between the two thumbs */
 }
 
-.track:last-child {
-  background: transparent;
+.age-slider .track-age-2 {
+  background: #ddd; /* Unselected part after the second thumb */
+}
+
+/* CSS for the height and income minimum sliders */
+.track-min-0 {
+  background: #8b008b; /* Fill up to the single handle */
+}
+
+.track-min-1 {
+  background: #ddd; /* Remaining part of the track after the handle */
 }
 
 .submit-btn {
@@ -131,3 +148,4 @@
   margin-top: 1rem;
   color: #dddddd;
 }
+

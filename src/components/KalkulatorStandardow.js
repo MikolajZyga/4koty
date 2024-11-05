@@ -7,9 +7,9 @@ function KalkulatorStandardow() {
   const [gender, setGender] = useState('Mężczyźni');
   const [excludeObese, setExcludeObese] = useState('Nie');
   const [excludeMarried, setExcludeMarried] = useState('Nie');
-  const [ageRange, setAgeRange] = useState([18, 100]);
-  const [heightRange, setHeightRange] = useState([150, 220]);
-  const [incomeRange, setIncomeRange] = useState([0, 100000]);
+  const [ageRange, setAgeRange] = useState([18, 70]);
+  const [minHeight, setMinHeight] = useState(150); // Single value for minimum height
+  const [minIncome, setMinIncome] = useState(0); // Single value for minimum income
 
   return (
     <div className="container-standardow">
@@ -86,47 +86,43 @@ function KalkulatorStandardow() {
           {/* Age Range Slider */}
           <label>Wiek: {ageRange[0]} - {ageRange[1]} lat</label>
           <ReactSlider
-            className="range-slider"
+            className="range-slider age-slider"
             thumbClassName="thumb"
-            trackClassName="track"
+            trackClassName="track-age"
             value={ageRange}
             onChange={(value) => setAgeRange(value)}
             min={18}
-            max={100}
+            max={70}
             minDistance={1}
             pearling
-            withTracks
+            withTracks={true}
           />
 
-          {/* Height Range Slider */}
-          <label>Wzrost: {heightRange[0]} - {heightRange[1]} cm</label>
+          {/* Height Minimum Slider */}
+          <label>Minimalny wzrost: {minHeight} cm</label>
           <ReactSlider
-            className="range-slider"
+            className="range-slider min-slider"
             thumbClassName="thumb"
-            trackClassName="track"
-            value={heightRange}
-            onChange={(value) => setHeightRange(value)}
+            trackClassName="track-min"
+            value={minHeight}
+            onChange={(value) => setMinHeight(value)}
             min={150}
-            max={220}
-            minDistance={1}
-            pearling
-            withTracks
+            max={200}
+            withTracks={true}
           />
 
-          {/* Income Range Slider */}
-          <label>Miesięczne zarobki: {incomeRange[0]} zł - {incomeRange[1]} zł</label>
+          {/* Income Minimum Slider */}
+          <label>Minimalne miesięczne zarobki: {minIncome} zł</label>
           <ReactSlider
-            className="range-slider"
+            className="range-slider min-slider"
             thumbClassName="thumb"
-            trackClassName="track"
-            value={incomeRange}
-            onChange={(value) => setIncomeRange(value)}
+            trackClassName="track-min"
+            value={minIncome}
+            onChange={(value) => setMinIncome(value)}
             min={0}
-            max={100000}
+            max={50000}
             step={500}
-            minDistance={500}
-            pearling
-            withTracks
+            withTracks={true}
           />
 
           {/* Submit Button */}
@@ -135,7 +131,7 @@ function KalkulatorStandardow() {
           </button>
         </form>
       </div>
-      <p className="footer-text">Obliczenia na podstawie danych z polskich statystyk.</p>
+      <p className="footer-text">Obliczenia na podstawie danych z GUS.</p>
     </div>
   );
 }
