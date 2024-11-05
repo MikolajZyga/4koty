@@ -149,3 +149,32 @@
   color: #dddddd;
 }
 
+.container-wynik {
+  background-color: #3f2a56;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.result-box {
+  background-color: #ffffff;
+  color: #3f2a56;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+.percentage-display {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #8b008b;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}

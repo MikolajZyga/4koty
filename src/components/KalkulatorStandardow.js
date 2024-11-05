@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
+import { useNavigate } from 'react-router-dom';
 
 function KalkulatorStandardow() {
   // State for options and sliders
@@ -11,6 +12,16 @@ function KalkulatorStandardow() {
   const [minHeight, setMinHeight] = useState(150); // Single value for minimum height
   const [minIncome, setMinIncome] = useState(0); // Single value for minimum income
 
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleCalculation = () => {
+    // Perform your calculation logic here and get the result
+    const result = Math.floor(Math.random() * 100); // Replace with actual calculation logic
+
+    // Navigate to the results page and pass the result as state
+    navigate('/wynik', { state: { percentage: result } });
+  };
+
   return (
     <div className="container-standardow">
       <h1 className="title">Kalkulator Standardów</h1>
@@ -19,7 +30,7 @@ function KalkulatorStandardow() {
       </p>
       <div className="calculator-box">
         <h2>Jaki procent osób w Polsce spełnia Twoje standardy?</h2>
-        <form>
+        <form onSubmit={(e) => { e.preventDefault(); handleCalculation(); }}>
           {/* Gender Selection */}
           <div className="option-row">
             <label className="option-label">Płeć</label>
@@ -107,7 +118,7 @@ function KalkulatorStandardow() {
             value={minHeight}
             onChange={(value) => setMinHeight(value)}
             min={150}
-            max={200}
+            max={215}
             withTracks={true}
           />
 
