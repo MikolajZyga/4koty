@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
+import { calculateMatchingPercentage } from '../utils/calculateOutcome';
+import maleData from '/Users/mikolajzyga/4koty/src/data/malePopulationData.json'; // Adjust path as needed
+import femaleData from '/Users/mikolajzyga/4koty/src/data/femalePopulationData.json'; // Adjust path as needed
 
 function KalkulatorStandardow() {
   // State for options and sliders
@@ -15,8 +18,14 @@ function KalkulatorStandardow() {
   const navigate = useNavigate(); // Hook for navigation
 
   const handleCalculation = () => {
-    // Perform your calculation logic here and get the result
-    const result = Math.floor(Math.random() * 100); // Replace with actual calculation logic
+    const isNonObese = excludeObese === 'Tak';
+    const maritalStatus = excludeMarried === 'Tak' ? 'single' : 'married';
+
+    // Select data based on gender
+    const data = gender === 'Mężczyźni' ? maleData : femaleData;
+
+    // Perform the actual calculation using imported function
+    const result = calculateMatchingPercentage(data, ageRange, maritalStatus, isNonObese, minHeight, minIncome);
 
     // Navigate to the results page and pass the result as state
     navigate('/wynik', { state: { percentage: result } });

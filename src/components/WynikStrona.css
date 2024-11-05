@@ -32,3 +32,8 @@
     margin-top: 1rem;
     font-size: 1.2rem;
   }
+
+.result-message {
+    font-size: 1.5em;
+    color: #333;
+  }
