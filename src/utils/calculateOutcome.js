@@ -1,5 +1,6 @@
-import maleData from './data/malePopulationData.json';
-import femaleData from './data/femalePopulationData.json';
+import maleData from '../data/malePopulationData.json';
+import femaleData from '../data/femalePopulationData.json';
+
 
 export function calculateMatchingPercentage(data, ageRange, maritalStatus, isNonObese, minHeight, minIncome) {
     // Extract total population
