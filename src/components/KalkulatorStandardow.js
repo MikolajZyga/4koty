@@ -3,8 +3,8 @@ import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
 import { calculateMatchingPercentage } from '../utils/calculateOutcome';
-import maleData from '/Users/mikolajzyga/4koty/src/data/malePopulationData.json'; // Adjust path as needed
-import femaleData from '/Users/mikolajzyga/4koty/src/data/femalePopulationData.json'; // Adjust path as needed
+import maleData from './data/malePopulationData.json';
+import femaleData from './data/femalePopulationData.json';
 
 function KalkulatorStandardow() {
   // State for options and sliders
