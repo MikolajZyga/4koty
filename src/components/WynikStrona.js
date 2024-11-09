@@ -1,6 +1,11 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './WynikStrona.css';
+import image0 from '../assets/images/0.jpeg';
+import image1 from '../assets/images/1.jpeg';
+import image2 from '../assets/images/2.jpeg';
+import image3 from '../assets/images/3.jpeg';
+import image4 from '../assets/images/4.jpeg';
 
 function WynikStrona() {
   const location = useLocation();
@@ -8,11 +13,11 @@ function WynikStrona() {
 
   // Placeholder image URLs based on percentage range
   const getImageForPercentage = (percentage) => {
-    if (percentage > 80) return '/Users/mikolajzyga/4koty/src/assets/images/0.jpeg';
-    if (percentage > 60) return '/Users/mikolajzyga/4koty/src/assets/images/1.jpeg';
-    if (percentage > 40) return '/Users/mikolajzyga/4koty/src/assets/images/2.jpeg';
-    if (percentage > 20) return '/Users/mikolajzyga/4koty/src/assets/images/3.jpeg';
-    return '/Users/mikolajzyga/4koty/src/assets/images/4.jpeg';
+    if (percentage > 80) return image0;
+    if (percentage > 60) return image1;
+    if (percentage > 40) return image2;
+    if (percentage > 20) return image3;
+    return image4;
   };
 
   // Placeholder descriptions based on percentage range
@@ -30,8 +35,8 @@ function WynikStrona() {
 
       {/* Display Image Based on Final Matching Percentage */}
       <div className="image-container">
-        <img src={getImageForPercentage(finalMatchingPercentage)} alt="Match result illustration" className="result-image" />
-      </div>
+      <img src={getImageForPercentage(ageGroupMatchingPercentage)} alt="Match result illustration" className="result-image" />
+    </div>
 
       {/* Age Group Matching Percentage */}
       <div className="result-box">
@@ -42,7 +47,7 @@ function WynikStrona() {
         <p className="exact-population">To odpowiada około {exactPopulationCount?.toLocaleString()} osobom.</p>
       </div>
       {/* Dynamic Text Description Based on Percentage */}
-      <p className="result-message">{getDescriptionForPercentage(finalMatchingPercentage)}</p>
+      <p className="result-message">{getDescriptionForPercentage(ageGroupMatchingPercentage)}</p>
 
       {/* Final Matching Percentage */}
       <div className="final-percentage-box">

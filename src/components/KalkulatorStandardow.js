@@ -31,7 +31,7 @@ function KalkulatorStandardow() {
         minIncome
     });
 
-    navigate('/wynik', { state: { finalMatchingPercentage: result.finalMatchingPercentage, ageGroupMatchingPercentage: result.ageGroupMatchingPercentage } });
+    navigate('/wynik', { state: { finalMatchingPercentage: result.finalMatchingPercentage, ageGroupMatchingPercentage: result.ageGroupMatchingPercentage, exactPopulationCount: result.exactPopulationCount } });
 };
 
   return (

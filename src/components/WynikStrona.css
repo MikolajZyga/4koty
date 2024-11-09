@@ -14,29 +14,35 @@
 }
 
 .image-container {
-  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .result-image {
-  width: 100%;
-  max-width: 300px;
+  max-width: 50%; /* Adjusted for a smaller image size */
+  height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .result-box {
   background-color: #ffffff;
   color: #3f2a56;
-  padding: 2rem;
+  padding: 0.005rem 2rem; /* Reduced top and bottom padding */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
+  max-width: 800px; /* Keeps width as is */
+  margin: 0 auto;
 }
 
 .percentage-display {
   font-size: 4rem;
   font-weight: bold;
   color: #8b008b;
+  margin: 0.5rem 0; /* Reduced top and bottom margin */
 }
 
 .description {
@@ -64,6 +70,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   color: #8b008b;
+  margin: 0.5rem 0;
 }
 
 .final-description {

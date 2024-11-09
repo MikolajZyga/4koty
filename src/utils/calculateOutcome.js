@@ -75,8 +75,10 @@ export function calculateOutcome({
     // Final Matching Percentage
     const finalMatchingPercentage = (population / data.total_population) * 100;
     const ageGroupMatchingPercentage = (population / ageFilteredPopulation) * 100;
+    const exactPopulationCount = Math.round(population);
     console.log("Final Matching Percentage:", finalMatchingPercentage);
     console.log("Age group Matching Percentage:", ageGroupMatchingPercentage);
+    console.log("Exact Population Count:", exactPopulationCount);
 
-      return { finalMatchingPercentage, ageGroupMatchingPercentage };
+      return { finalMatchingPercentage, ageGroupMatchingPercentage, exactPopulationCount };
 }
