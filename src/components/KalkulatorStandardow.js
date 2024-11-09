@@ -3,8 +3,8 @@ import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
 import { calculateOutcome } from '../utils/calculateOutcome';
-import maleData from '../data/malePopulationData.json';
-import femaleData from '../data/femalePopulationData.json';
+//import maleData from '../data/malePopulationData.json';
+//import femaleData from '../data/femalePopulationData.json';
 const showGenderSelection = false;
 
 
@@ -158,8 +158,8 @@ function KalkulatorStandardow() {
 
           {/* Submit Button */}
           <button type="submit" className="global-button">
-  🎉 Sprawdź Wynik 🚀
-</button>
+           🎉 Sprawdź Wynik 🚀
+          </button>
         </form>
       </div>
       <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>
