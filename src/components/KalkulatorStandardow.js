@@ -6,6 +6,7 @@ import { calculateOutcome } from '../utils/calculateOutcome';
 import maleData from '../data/malePopulationData.json';
 import femaleData from '../data/femalePopulationData.json';
 
+
 function KalkulatorStandardow() {
   // State for options and sliders
   const [gender, setGender] = useState('Mężczyźni');
@@ -21,22 +22,17 @@ function KalkulatorStandardow() {
     const isNonObese = excludeObese === 'Tak';
     const maritalStatus = excludeMarried === 'Tak' ? 'single' : 'married';
 
-    // Select data based on gender
-    const data = gender === 'Mężczyźni' ? maleData : femaleData;
-
-    // Perform the actual calculation using calculateOutcome
     const result = calculateOutcome({
-      gender: gender === 'Mężczyźni' ? 'male' : 'female',
-      excludeObese: isNonObese,
-      excludeMarried: maritalStatus === 'single',
-      ageRange,
-      minHeight,
-      minIncome
+        gender: gender === 'Mężczyźni' ? 'male' : 'female',
+        excludeObese: isNonObese,
+        excludeMarried: maritalStatus === 'single',
+        ageRange,
+        minHeight,
+        minIncome
     });
 
-    // Navigate to the results page and pass the result as state
-    navigate('/wynik', { state: { percentage: result } });
-  };
+    navigate('/wynik', { state: { finalMatchingPercentage: result.finalMatchingPercentage, ageGroupMatchingPercentage: result.ageGroupMatchingPercentage } });
+};
 
   return (
     <div className="container-standardow">
@@ -158,7 +154,7 @@ function KalkulatorStandardow() {
           </button>
         </form>
       </div>
-      <p className="footer-text">Obliczenia na podstawie danych z GUS.</p>
+      <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>
     </div>
   );
 }

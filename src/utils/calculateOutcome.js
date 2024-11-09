@@ -18,19 +18,17 @@ export function calculateOutcome({
     console.log("Initial Population:", population);
 
     // 1. Age Filtering
+    const ageDistribution = data.ageDistribution;
+    // Generate age keys with " years" suffix for the specified range
+    const ageKeys = Array.from({ length: ageRange[1] - ageRange[0] + 1 }, (_, i) => `${ageRange[0] + i} years`);
+    // Sum up the proportions for the specified age range
+    const ageProportion = ageKeys.reduce((sum, key) => sum + (ageDistribution[key] || 0), 0);
+    // Apply the age filter to the population
+    population *= ageProportion;
+    // Save the filtered population after age filter
+    const ageFilteredPopulation = population;
 
-const ageDistribution = data.ageDistribution;
-
-// Generate age keys with " years" suffix for the specified range
-const ageKeys = Array.from({ length: ageRange[1] - ageRange[0] + 1 }, (_, i) => `${ageRange[0] + i} years`);
-
-// Sum up the proportions for the specified age range
-const ageProportion = ageKeys.reduce((sum, key) => sum + (ageDistribution[key] || 0), 0);
-
-// Apply the age filter to the population
-population *= ageProportion;
-
-console.log("After Age Filter:", population);
+    console.log("After Age Filter:", population);
 
     // 2. Marital Status Filter
     if (excludeMarried) {
@@ -76,7 +74,9 @@ console.log("After Age Filter:", population);
 
     // Final Matching Percentage
     const finalMatchingPercentage = (population / data.total_population) * 100;
+    const ageGroupMatchingPercentage = (population / ageFilteredPopulation) * 100;
     console.log("Final Matching Percentage:", finalMatchingPercentage);
+    console.log("Age group Matching Percentage:", ageGroupMatchingPercentage);
 
-    return finalMatchingPercentage;
+      return { finalMatchingPercentage, ageGroupMatchingPercentage };
 }
