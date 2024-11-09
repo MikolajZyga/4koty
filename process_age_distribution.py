@@ -1,4 +1,5 @@
 import pandas as pd
+import json
 
 # Load the CSV file with the correct delimiter and skip the first row with total values
 data = pd.read_csv('/Users/mikolajzyga/4koty/src/data/age_distribution.csv', delimiter=';', skiprows=1)
@@ -10,43 +11,29 @@ data.columns = ['Age Group', 'Females', 'Males', 'Total']
 data['Females'] = pd.to_numeric(data['Females'].str.replace(' ', ''), errors='coerce')
 data['Males'] = pd.to_numeric(data['Males'].str.replace(' ', ''), errors='coerce')
 
-# Define a function to group age categories
-def categorize_age_group(age_group):
-    # Check if the age group contains a number
-    age_str = age_group.split()[0]  # Extract the first word (e.g., "19" from "19 years")
-    
-    # Handle known cases for "less than 1 year" or other special labels
-    if 'less than' in age_group or 'year' in age_group and age_str.isdigit() and int(age_str) <= 18:
-        return '0-18'
-    elif age_str.isdigit():
-        age = int(age_str)
-        if 19 <= age <= 69:
-            return str(age)  # Treat each age as its own category
-        elif age == 70:
-            return '70'
-        elif age > 70:
-            return '70+'
-    else:
-        print(f"Uncategorized age group found: {age_group}")  # Debug line to check unexpected labels
-    return 'Other'  # Only if no conditions are met
+# Define a function to filter ages from 18 to 70
+def is_age_in_range(age_group):
+    try:
+        age = int(age_group.split()[0])  # Extract the numeric part of the age
+        return 18 <= age <= 70
+    except ValueError:
+        return False  # Return False for non-numeric age groups (e.g., "less than 1 year" or "total")
 
-# Apply the categorization function to create a new column
-data['Age Group Category'] = data['Age Group'].apply(categorize_age_group)
+# Filter data to include only ages from 18 to 70
+filtered_data = data[data['Age Group'].apply(is_age_in_range)]
 
-# Group by the new age categories and sum
-grouped_data = data.groupby('Age Group Category').sum()
-
-# Calculate total male and female populations for normalization
-total_male_population = grouped_data['Males'].sum()
-total_female_population = grouped_data['Females'].sum()
+# Calculate the total population for males and females within the age range 18-70
+total_male_population_18_70 = filtered_data['Males'].sum()
+total_female_population_18_70 = filtered_data['Females'].sum()
 
 # Create normalized distributions
-grouped_data['Male Distribution'] = grouped_data['Males'] / total_male_population
-grouped_data['Female Distribution'] = grouped_data['Females'] / total_female_population
+filtered_data['Male Distribution'] = filtered_data['Males'] / total_male_population_18_70
+filtered_data['Female Distribution'] = filtered_data['Females'] / total_female_population_18_70
 
-# Convert to JSON structures
-male_distribution = grouped_data['Male Distribution'].to_dict()
-female_distribution = grouped_data['Female Distribution'].to_dict()
+# Convert distributions to dictionary format for JSON output
+male_distribution = dict(zip(filtered_data['Age Group'], filtered_data['Male Distribution']))
+female_distribution = dict(zip(filtered_data['Age Group'], filtered_data['Female Distribution']))
 
-print("Male Distribution JSON:", male_distribution)
-print("Female Distribution JSON:", female_distribution)
+# Print results in JSON format
+print("Male Distribution JSON:", json.dumps(male_distribution, indent=4))
+print("Female Distribution JSON:", json.dumps(female_distribution, indent=4))

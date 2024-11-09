@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
-import { calculateMatchingPercentage } from '../utils/calculateOutcome';
+import { calculateOutcome } from '../utils/calculateOutcome';
 import maleData from '../data/malePopulationData.json';
 import femaleData from '../data/femalePopulationData.json';
 
@@ -24,8 +24,15 @@ function KalkulatorStandardow() {
     // Select data based on gender
     const data = gender === 'Mężczyźni' ? maleData : femaleData;
 
-    // Perform the actual calculation using imported function
-    const result = calculateMatchingPercentage(data, ageRange, maritalStatus, isNonObese, minHeight, minIncome);
+    // Perform the actual calculation using calculateOutcome
+    const result = calculateOutcome({
+      gender: gender === 'Mężczyźni' ? 'male' : 'female',
+      excludeObese: isNonObese,
+      excludeMarried: maritalStatus === 'single',
+      ageRange,
+      minHeight,
+      minIncome
+    });
 
     // Navigate to the results page and pass the result as state
     navigate('/wynik', { state: { percentage: result } });
@@ -157,3 +164,7 @@ function KalkulatorStandardow() {
 }
 
 export default KalkulatorStandardow;
+
+
+
+// POZDRO KUBA!!! 

@@ -1,51 +1,82 @@
+// Import the datasets
 import maleData from '../data/malePopulationData.json';
 import femaleData from '../data/femalePopulationData.json';
 
 
-export function calculateMatchingPercentage(data, ageRange, maritalStatus, isNonObese, minHeight, minIncome) {
-    // Extract total population
-    const totalPopulation = data.total_population;
-    if (!totalPopulation || totalPopulation <= 0) {
-        throw new Error('Invalid total population value in data.');
+export function calculateOutcome({
+    gender,
+    excludeObese,
+    excludeMarried,
+    ageRange,
+    minHeight,
+    minIncome
+}) {
+    // Select the appropriate dataset based on gender
+    const data = gender === 'male' ? maleData : femaleData;
+    let population = data.total_population;
+
+    console.log("Initial Population:", population);
+
+    // 1. Age Filtering
+
+const ageDistribution = data.ageDistribution;
+
+// Generate age keys with " years" suffix for the specified range
+const ageKeys = Array.from({ length: ageRange[1] - ageRange[0] + 1 }, (_, i) => `${ageRange[0] + i} years`);
+
+// Sum up the proportions for the specified age range
+const ageProportion = ageKeys.reduce((sum, key) => sum + (ageDistribution[key] || 0), 0);
+
+// Apply the age filter to the population
+population *= ageProportion;
+
+console.log("After Age Filter:", population);
+
+    // 2. Marital Status Filter
+    if (excludeMarried) {
+        const singleProportion = data.maritalStatus.single;
+        population *= singleProportion;
+        console.log("After Marital Status Filter:", population);
     }
 
-    // Calculate age percentage
-    const ageDistribution = data.ageDistribution;
-    const ageKeys = Array.from({ length: ageRange[1] - ageRange[0] + 1 }, (_, i) => (ageRange[0] + i).toString());
-    const agePercentage = ageKeys.reduce((sum, key) => sum + (ageDistribution[key] || 0), 0);
-    if (agePercentage === 0) {
-        throw new Error('No age data matches the selected range.');
+    // 3. Obesity Filter
+    if (excludeObese) {
+        const nonObeseProportion = data.obesityRates.nonObese;
+        population *= nonObeseProportion;
+        console.log("After Obesity Filter:", population);
     }
 
-    // Get marital status percentage
-    const maritalStatusPercentage = data.maritalStatus[maritalStatus];
-    if (!maritalStatusPercentage) {
-        throw new Error('Invalid marital status input.');
+    // 4. Height Filter
+    const heightDistribution = data.heightDistribution;
+    let heightProportion = 0;
+
+    for (let i = 0; i < heightDistribution.length; i++) {
+        if (heightDistribution[i].height >= minHeight) {
+            heightProportion = 1 * heightDistribution[i].cumulativePercentage;
+            break;
+        }
     }
 
-    // Get obesity percentage
-    const obesityPercentage = isNonObese ? data.obesityRates.nonObese : data.obesityRates.obese;
-    if (obesityPercentage === undefined) {
-        throw new Error('Invalid obesity data.');
+    population *= heightProportion;
+    console.log("After Height Filter:", population);
+
+    // 5. Income Filter
+    const incomeDistribution = data.incomeDistribution;
+    let incomeProportion = 0;
+
+    for (let i = 0; i < incomeDistribution.length; i++) {
+        if (incomeDistribution[i].income >= minIncome) {
+            incomeProportion = 1 * incomeDistribution[i].cumulativePercentage;
+            break;
+        }
     }
 
-    // Get height percentage
-    const heightThresholds = data.heightDistribution;
-    const heightPercentage = Object.entries(heightThresholds).find(([key]) => parseInt(key.split('_')[1], 10) >= minHeight)?.[1] || 0;
-    if (heightPercentage === 0) {
-        throw new Error('Invalid height threshold provided.');
-    }
+    population *= incomeProportion;
+    console.log("After Income Filter:", population);
 
-    // Get income percentage
-    const incomeThresholds = data.incomeDistribution;
-    const incomePercentage = Object.entries(incomeThresholds).find(([key]) => parseInt(key.split('_')[1], 10) >= minIncome)?.[1] || 0;
-    if (incomePercentage === 0) {
-        throw new Error('Invalid income threshold provided.');
-    }
+    // Final Matching Percentage
+    const finalMatchingPercentage = (population / data.total_population) * 100;
+    console.log("Final Matching Percentage:", finalMatchingPercentage);
 
-    // Combine percentages
-    const matchingPercentage = agePercentage * maritalStatusPercentage * obesityPercentage * heightPercentage * incomePercentage;
-
-    // Return as a percentage
-    return matchingPercentage * 100;
+    return finalMatchingPercentage;
 }
