@@ -98,6 +98,10 @@
           { "income": 20352.45, "cumulativePercentage": 0.036 },
           { "income": 22387.70, "cumulativePercentage": 0.028 },
           { "income": 24422.94, "cumulativePercentage": 0.022 },
-          { "income": 30000, "cumulativePercentage": 0.011 }
+          { "income": 30000, "cumulativePercentage": 0.011 },
+          { "income": 35000, "cumulativePercentage": 0.008 },
+          { "income": 40000, "cumulativePercentage": 0.003 },
+          { "income": 45000, "cumulativePercentage": 0.002 },
+          { "income": 49000, "cumulativePercentage": 0.001 }
         ]
       }
