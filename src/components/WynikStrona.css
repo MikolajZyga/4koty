@@ -1,39 +1,83 @@
 .container-wynik {
-    background-color: #3f2a56;
-    color: #ffffff;
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .result-box {
-    background-color: #ffffff;
-    color: #3f2a56;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 1.5rem;
-  }
-  
-  .percentage-display {
-    font-size: 4rem;
-    font-weight: bold;
-    color: #8b008b;
-  }
-  
-  .description {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-  }
+  background-color: #3f2a56;
+  color: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.image-container {
+  margin: 1.5rem 0;
+}
+
+.result-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.result-box {
+  background-color: #ffffff;
+  color: #3f2a56;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+.percentage-display {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #8b008b;
+}
+
+.description {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.exact-population {
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  color: #3f2a56;
+  font-weight: bold;
+}
+
+.final-percentage-box {
+  background-color: #f0f8ff;
+  color: #3f2a56;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.final-percentage {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #8b008b;
+}
+
+.final-description {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  color: #3f2a56;
+}
 
 .result-message {
-    font-size: 1.5em;
-    color: #333;
-  }
+  font-size: 1.5em;
+  color: #ffffff;
+  margin-top: 2rem;
+  background-color: #8b008b;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
