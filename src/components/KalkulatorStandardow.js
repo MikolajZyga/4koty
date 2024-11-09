@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { calculateOutcome } from '../utils/calculateOutcome';
 import maleData from '../data/malePopulationData.json';
 import femaleData from '../data/femalePopulationData.json';
+const showGenderSelection = false;
 
 
 function KalkulatorStandardow() {
@@ -36,37 +37,44 @@ function KalkulatorStandardow() {
 
   return (
     <div className="container-standardow">
-      <h1 className="title">Kalkulator Standardów</h1>
+      <h1 className="title">✨ DELULULATOR ✨</h1>
       <p className="subtitle">
-        Czy Twój idealny partner jest realny, czy to tylko fantazja? Sprawdź to za pomocą naszego kalkulatora.
+      Nudzi Cię życie singielki? 😴 Nie możesz znaleźć swojego księcia? 👑 Może on nie istnieje? 🤔
+      Sprawdź przy pomocy kalkulatora delulu, czy Twój wymarzony gach nie czai się za rogiem. 🌹 
+      My policzyliśmy ilu fajnych chłopaków żyje w Polsce i czeka na swoją księżniczkę, 👸 
+      Ty nam tylko powiedz który książę jest fajny dla Ciebie. Zrób tak, żeby było najlepiej ✨💅🔥
       </p>
       <div className="calculator-box">
-        <h2>Jaki procent osób w Polsce spełnia Twoje standardy?</h2>
+        <h2>Jaki procent mężczyzn w Polsce spełnia Twoje standardy?</h2>
         <form onSubmit={(e) => { e.preventDefault(); handleCalculation(); }}>
-          {/* Gender Selection */}
-          <div className="option-row">
-            <label className="option-label">Płeć</label>
-            <div className="option-group">
-              <button
-                type="button"
-                className={`option-btn ${gender === 'Mężczyźni' ? 'selected' : ''}`}
-                onClick={() => setGender('Mężczyźni')}
-              >
-                Mężczyźni
-              </button>
-              <button
-                type="button"
-                className={`option-btn ${gender === 'Kobiety' ? 'selected' : ''}`}
-                onClick={() => setGender('Kobiety')}
-              >
-                Kobiety
-              </button>
-            </div>
-          </div>
+
+
+           {/* Gender Selection */}
+        {showGenderSelection && (
+        <div className="option-row">
+        <label className="option-label">Płeć</label>
+        <div className="option-group">
+        <button
+        type="button"
+        className={`option-btn ${gender === 'Mężczyźni' ? 'selected' : ''}`}
+        onClick={() => setGender('Mężczyźni')}
+          >
+        Mężczyźni
+        </button>
+        <button
+        type="button"
+        className={`option-btn ${gender === 'Kobiety' ? 'selected' : ''}`}
+        onClick={() => setGender('Kobiety')}
+        >
+        Kobiety
+      </button>
+    </div>
+  </div>
+)}
 
           {/* Exclude Obese */}
           <div className="option-row">
-            <label className="option-label">Wyklucz osoby otyłe</label>
+            <label className="option-label">Wyklucz otyłych</label>
             <div className="option-group">
               <button
                 type="button"
@@ -87,7 +95,7 @@ function KalkulatorStandardow() {
 
           {/* Exclude Married */}
           <div className="option-row">
-            <label className="option-label">Wyklucz osoby zamężne/żonate</label>
+            <label className="option-label">Wyklucz żonatych</label>
             <div className="option-group">
               <button
                 type="button"
@@ -149,9 +157,9 @@ function KalkulatorStandardow() {
           />
 
           {/* Submit Button */}
-          <button type="submit" className="submit-btn">
-            Sprawdź Wynik
-          </button>
+          <button type="submit" className="global-button">
+  🎉 Sprawdź Wynik 🚀
+</button>
         </form>
       </div>
       <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>

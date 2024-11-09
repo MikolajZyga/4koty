@@ -1,21 +1,61 @@
+body {
+  background-color: #563d6e; /* Slightly lighter than #3f2a56 */
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container-standardow {
   background-color: #3f2a56;
   color: #ffffff;
   padding: 2rem;
   border-radius: 15px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto;
   text-align: center;
 }
 
 .title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 3rem; /* Larger font size for emphasis */
+  color: #ff1493; /* Vibrant pink color */
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 3px #8b008b, 0 0 3px #ff69b4, 0 0 6px #ff1493;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background: linear-gradient(45deg, #ffe4e1, #ffb6c1); /* Soft gradient background */
+  border-radius: 12px;
+  animation: pulse 2s infinite; /* Adds a pulse effect */
+}
+
+/* Adding a simple pulsing animation */
+@keyframes pulse {
+  0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.05);
+      opacity: 0.95;
+  }
 }
 
 .subtitle {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.3rem; /* Larger font for emphasis */
+  line-height: 2; /* Increase spacing for readability */
+  color: #ff69b4; /* A vibrant pink color */
+  text-shadow: 1px 1px 2px #333, 0 0 1em #ff69b4, 0 0 0.2em #8b008b;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  background-color: #fdf2f8; /* Light background for contrast */
+}
+
+.subtitle emoji {
+  font-size: 1.5rem; /* Make emojis slightly larger for emphasis */
 }
 
 .calculator-box {
@@ -127,20 +167,34 @@
   background: #ddd; /* Remaining part of the track after the handle */
 }
 
-.submit-btn {
-  background-color: #000000;
+.global-button {
+  margin-top: 2rem;
+  background-color: #8b008b; /* Fun, bold color */
   color: #ffffff;
+  padding: 1rem 1.5rem;
   border: none;
-  padding: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 50px; /* Rounded for a softer look */
   font-size: 1rem;
-  margin-top: 1rem;
-  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* Space for emoji */
 }
 
-.submit-btn:hover {
-  background-color: #222222;
+/* Hover effects */
+.global-button:hover {
+  background-color: #7a007a;
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Active state for "press" effect */
+.global-button:active {
+  transform: translateY(2px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .footer-text {
