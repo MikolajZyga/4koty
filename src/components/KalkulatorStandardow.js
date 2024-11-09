@@ -134,7 +134,7 @@ function KalkulatorStandardow() {
             value={minHeight}
             onChange={(value) => setMinHeight(value)}
             min={150}
-            max={215}
+            max={205}
             withTracks={true}
           />
 
