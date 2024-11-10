@@ -3,6 +3,7 @@ import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
 import { calculateOutcome } from '../utils/calculateOutcome';
+import FAQSection from './FAQSection';
 //import maleData from '../data/malePopulationData.json';
 //import femaleData from '../data/femalePopulationData.json';
 const showGenderSelection = false;
@@ -163,9 +164,14 @@ function KalkulatorStandardow() {
         </form>
       </div>
       <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>
+
+                  {/* Add FAQ Section Below Calculator */}
+                  <FAQSection />
     </div>
   );
+  
 }
+
 
 export default KalkulatorStandardow;
 
