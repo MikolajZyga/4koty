@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactSlider from 'react-slider';
 import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +24,16 @@ function KalkulatorStandardow() {
     const isNonObese = excludeObese === 'Tak';
     const maritalStatus = excludeMarried === 'Tak' ? 'single' : 'married';
 
+      // Save current state values to localStorage
+  localStorage.setItem('calculatorState', JSON.stringify({
+    gender,
+    excludeObese,
+    excludeMarried,
+    ageRange,
+    minHeight,
+    minIncome,
+  }));
+
     const result = calculateOutcome({
         gender: gender === 'Mężczyźni' ? 'male' : 'female',
         excludeObese: isNonObese,
@@ -35,6 +45,19 @@ function KalkulatorStandardow() {
 
     navigate('/wynik', { state: { finalMatchingPercentage: result.finalMatchingPercentage, ageGroupMatchingPercentage: result.ageGroupMatchingPercentage, exactPopulationCount: result.exactPopulationCount } });
 };
+
+useEffect(() => {
+  // Check if previous values exist in localStorage
+  const savedState = JSON.parse(localStorage.getItem('calculatorState'));
+  if (savedState) {
+    setGender(savedState.gender);
+    setExcludeObese(savedState.excludeObese);
+    setExcludeMarried(savedState.excludeMarried);
+    setAgeRange(savedState.ageRange);
+    setMinHeight(savedState.minHeight);
+    setMinIncome(savedState.minIncome);
+  }
+}, []);
 
   return (
     <div className="container-standardow">
