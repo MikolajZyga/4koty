@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate  } from 'react-router-dom';
 import './WynikStrona.css';
 import image0 from '../assets/images/0.jpeg';
@@ -11,6 +11,11 @@ function WynikStrona() {
   const location = useLocation();
   const navigate = useNavigate();
   const { finalMatchingPercentage, ageGroupMatchingPercentage, exactPopulationCount } = location.state || {};
+
+    // Scroll to the top when the component mounts
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   // Placeholder image URLs based on percentage range
   const getImageForPercentage = (percentage) => {
