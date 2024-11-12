@@ -111,3 +111,19 @@
   color: white;
   text-decoration: underline;
 }
+
+.calculated-by {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.calculated-by a {
+  color: #8b008b;
+  text-decoration: none;
+}
+
+.calculated-by a:hover {
+  text-decoration: underline;
+}

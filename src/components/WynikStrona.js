@@ -51,11 +51,13 @@ function WynikStrona() {
       {/* Age Group Matching Percentage */}
       <div className="result-box">
       <p className="description">🎯 Oto wynik w wybranej grupie wiekowej. 🎯</p>
+      
         <h2 className="percentage-display">{ageGroupMatchingPercentage?.toFixed(2)}%</h2>
-
+        <p className="calculated-by">Obliczone przez <a href="https://4koty.pl" target="_blank" rel="noopener noreferrer">4koty.pl</a></p>
         {/* Exact Population Count */}
         <p className="exact-population">🔍 Około {exactPopulationCount?.toLocaleString()} mężczyzn jest w Twoim typie. 🔍</p>
         <p className="description">Czyli {finalMatchingPercentage?.toFixed(2)}% wszystkich Polaków</p>
+    
       </div>
       {/* Dynamic Text Description Based on Percentage */}
       <p className="result-message">{getDescriptionForPercentage(ageGroupMatchingPercentage)} </p>
