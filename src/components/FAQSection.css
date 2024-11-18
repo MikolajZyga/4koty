@@ -5,7 +5,7 @@
     border-radius: 8px;
     max-width: 800px;
     margin: 2rem auto;
-    color: #ffffff;
+    color: #e0b3ff;
     font-family: Arial, sans-serif;
   }
   
@@ -43,6 +43,7 @@
   
   /* Answer styling */
   .faq-answer {
+    background-color: transparent;
     font-size: 1rem;
     color: #e0e0e0;
     margin-top: 0.5rem;
