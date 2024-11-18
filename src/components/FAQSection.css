@@ -82,3 +82,34 @@
       max-height: 500px; /* Adjust based on answer length */
     }
   }
+  .about-container {
+    background-color: #f9f9f9; /* Soft background for separation */
+    color: #333; /* Standard readable text color */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem 0;
+  }
+  
+  .about-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #8b008b; /* Add some personality to the title */
+    text-align: center;
+  }
+  
+  .about-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .about-quote {
+    font-style: italic;
+    background-color: #fff3cd; /* Highlighted background */
+    border-left: 4px solid #ffc107; /* Matching border color */
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    color: #856404; /* Soft contrasting color for readability */
+  }

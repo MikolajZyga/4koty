@@ -4,6 +4,7 @@ import './KalkulatorStandardow.css';
 import { useNavigate } from 'react-router-dom';
 import { calculateOutcome } from '../utils/calculateOutcome';
 import FAQSection from './FAQSection';
+import AboutSection from './AboutSection';
 //import maleData from '../data/malePopulationData.json';
 //import femaleData from '../data/femalePopulationData.json';
 const showGenderSelection = false;
@@ -189,6 +190,7 @@ useEffect(() => {
       <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>
 
                   {/* Add FAQ Section Below Calculator */}
+                  <AboutSection />
                   <FAQSection />
     </div>
   );
