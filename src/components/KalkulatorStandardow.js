@@ -192,11 +192,19 @@ useEffect(() => {
                   {/* Add FAQ Section Below Calculator */}
                   <AboutSection />
                   <FAQSection />
+
+                  <div className="container-standardow">
+  
+  {/* Add a footer for media contact */}
+  <footer className="footer-contact">
+    Kontakt dla mediów: <a href="mailto:arkadiastudio2024@gmail.com">arkadiastudio2024@gmail.com</a>
+  </footer>
+</div>
     </div>
+    
   );
   
 }
-
 
 export default KalkulatorStandardow;
 

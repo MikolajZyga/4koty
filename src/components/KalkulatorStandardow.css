@@ -275,3 +275,22 @@ body {
   border-radius: 5px;
   margin-top: 0.5rem;
 }
+
+.footer-contact {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  background-color: #3f2a56;
+  border-top: 1px solid #8b008b;
+}
+
+.footer-contact a {
+  color: #ff69b4;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
+}
