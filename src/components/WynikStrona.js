@@ -6,6 +6,7 @@ import image1 from '../assets/images/1.jpeg';
 import image2 from '../assets/images/2.jpeg';
 import image3 from '../assets/images/3.jpeg';
 import image4 from '../assets/images/4.jpeg';
+import Banner from './Banner';
 
 function WynikStrona() {
   const location = useLocation();
@@ -59,6 +60,7 @@ function WynikStrona() {
         <p className="description">Czyli {finalMatchingPercentage?.toFixed(2)}% wszystkich Polaków</p>
     
       </div>
+      <Banner />
       {/* Dynamic Text Description Based on Percentage */}
       <p className="result-message">{getDescriptionForPercentage(ageGroupMatchingPercentage)} </p>
       <p className="result-message">
