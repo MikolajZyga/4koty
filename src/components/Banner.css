@@ -1,0 +1,75 @@
+.banner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px; /* Matches the width of .container-wynik */
+    background: linear-gradient(145deg, #FFB067, #FF7733);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #ffffff;
+    margin: 2rem auto; /* Centers the banner with consistent spacing */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .banner-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .banner-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .banner-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 0.3rem; /* Reduced padding for a thinner border */
+    object-fit: contain;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .banner-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .banner-text p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #ffeedd;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .banner-container {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    .banner-content {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    .banner-logo {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .banner-text h2 {
+      font-size: 1.2rem;
+    }
+  
+    .banner-text p {
+      font-size: 0.9rem;
+    }
+  }

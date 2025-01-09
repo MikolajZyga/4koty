@@ -7,6 +7,7 @@ import FAQSection from './FAQSection';
 import AboutSection from './AboutSection';
 //import maleData from '../data/malePopulationData.json';
 //import femaleData from '../data/femalePopulationData.json';
+import Banner from './Banner';
 const showGenderSelection = false;
 
 
@@ -188,8 +189,10 @@ useEffect(() => {
         </form>
       </div>
       <p className="footer-text">Obliczenia na podstawie danych z GUS i Eurostat.</p>
+      
 
                   {/* Add FAQ Section Below Calculator */}
+                  <Banner />
                   <AboutSection />
                   <FAQSection />
     </div>
